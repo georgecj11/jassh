@@ -379,6 +379,7 @@ class SSH(val options: SSHOptions) extends AllOperations {
           buffer.append(part)
         case ExecEnd(rc) => exitCode = rc.toInt
         case ExecTimeout =>
+	case _ => logger.info("Unexepected result {}",  _:Any)
       }
     }
     var runner: Option[SSHExec] = None
